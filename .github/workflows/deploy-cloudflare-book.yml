@@ -1,0 +1,88 @@
+name: deploy-cloudflare-book
+
+on:
+  workflow_dispatch:
+
+env:
+  NB_KERNEL: python
+  NMA_REPO: course-content
+  NMA_MAIN_BRANCH: main
+
+jobs:
+  build-and-deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get commit message
+        run: |
+          readonly local msg=$(git log -1 --pretty=format:"%s")
+          echo "COMMIT_MESSAGE=$msg" >> "$GITHUB_ENV"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install CI tools from nmaci
+        run: |
+          BRANCH=$(python -c 'import os, re; m = re.search(r"nmaci:([\w-]+)", os.environ["COMMIT_MESSAGE"]); print("main" if m is None else m.group(1))')
+          wget "https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/${BRANCH}.tar.gz"
+          tar -xzf "${BRANCH}.tar.gz"
+          python -m pip install --upgrade pip
+          pip install -r "nmaci-${BRANCH}/requirements.txt"
+          mkdir -p ci
+          mv "nmaci-${BRANCH}/scripts/"* ci/
+          rm -rf "nmaci-${BRANCH}" "${BRANCH}.tar.gz"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install jupyter-book==0.14.0
+          pip install jupyter_client==7.3.5
+          npm install --no-save wrangler
+
+      - name: Install XKCD fonts
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
+        run: |
+          sudo apt-get update -yq
+          wget http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
+          sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
+          sudo apt install -fy
+          rm -f "$HOME/.matplotlib/fontList.cache"
+
+      - name: Copy tutorials from precourse repo
+        if: "!contains(env.COMMIT_MESSAGE, 'skip precourse')"
+        run: |
+          BRANCH=$(python -c 'import os, re; m = re.search(r"precourse:([\w-]+)", os.environ["COMMIT_MESSAGE"]); print("main" if m is None else m.group(1))')
+          wget "https://github.com/NeuromatchAcademy/precourse/archive/refs/heads/${BRANCH}.tar.gz"
+          tar -xzf "${BRANCH}.tar.gz"
+          mv "precourse-${BRANCH}/tutorials"/W0D* tutorials/
+          cat "precourse-${BRANCH}/tutorials/materials.yml" tutorials/materials.yml > out.yml
+          mv out.yml tutorials/materials.yml
+          mv "precourse-${BRANCH}/prereqs" .
+          rm -rf "precourse-${BRANCH}" "${BRANCH}.tar.gz"
+
+      - name: Build student book
+        run: |
+          python ci/generate_book.py student
+          jupyter-book toc migrate book/_toc.yml -o book/_toc.yml
+          ln -s ../tutorials book/tutorials
+          ln -s ../projects book/projects
+          ln -s ../prereqs book/prereqs
+          jupyter-book build book
+          python ci/parse_html_for_errors.py student
+
+      - name: Deploy to Cloudflare Workers
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler deploy
