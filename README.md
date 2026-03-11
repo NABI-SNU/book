@@ -1,15 +1,18 @@
-# NeuroMatch Academy (NMA) Computational Neuroscience syllabus
+# Computational Neuroscience Sessions
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-*July 7 - 25, 2025*
+This repository now hosts a curated session-based computational neuroscience book.
 
-Please check out [expected prerequisites here](https://github.com/NeuromatchAcademy/precourse/blob/main/prereqs/ComputationalNeuroscience.md)!
+**Primary book URL: https://book.nabilab.org/**
 
-**The content should primarily be accessed from our ebook: https://compneuro.neuromatch.io/ [under continuous development]**
+The rendered book keeps only the retained session flow:
 
-**Schedule: https://github.com/NeuromatchAcademy/course-content/blob/main/tutorials/Schedule/daily_schedules.md**
+- Session_1: Models, Dimension Reduction, Deep Learning
+- Session_2: Bayesian Inference
+- Session_3: Hidden Dynamics
+- Session_6: Representation Geometry
 
 ---
 
@@ -19,11 +22,13 @@ Please check out [expected prerequisites here](https://github.com/NeuromatchAcad
 
 [![CC BY 4.0][cc-by-shield]][cc-by] [![BSD-3][bsd-3-shield]][bsd-3]
 
-The contents of this repository are shared under under a [Creative Commons Attribution 4.0 International License][cc-by].
+This repository is maintained by NABI-SNU as an adaptation of Neuromatch Academy material.
 
-Software elements are additionally licensed under the [BSD (3-Clause) License][bsd-3].
+Much of the educational content in this repository is adapted from Neuromatch Academy Computational Neuroscience and NeuroAI course material and remains available under the [Creative Commons Attribution 4.0 International License][cc-by], with attribution to Neuromatch Academy and the original listed contributors.
 
-Derivative works may use the license that is more appropriate to the relevant context.
+Code and software elements adapted from Neuromatch Academy materials remain additionally available under the [BSD (3-Clause) License][bsd-3], with attribution to Neuromatch Academy.
+
+Where files include additional local adaptation by NABI-SNU, those changes are distributed subject to the same applicable upstream license for the relevant content or code.
 
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png

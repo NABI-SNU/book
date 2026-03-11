@@ -3,10 +3,17 @@
   "name": "compneu-book",
   "main": "./cloudflare/index.js",
   "compatibility_date": "2026-03-11",
+  "workers_dev": false,
   "assets": {
     "directory": "./book/_build/html",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "book.nabilab.org",
+      "custom_domain": true
+    }
+  ]
 }

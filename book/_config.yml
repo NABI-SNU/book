@@ -5,9 +5,9 @@
 
 #######################################################################################
 # Book settings
-title                       : "Neuromatch Academy: Computational Neuroscience"  # The title of the book. Will be placed in the left navbar.
-author                      : Neuromatch  # The author of the book
-copyright                   : ""  # Copyright year to be placed in the footer
+title                       : "Computational Neuroscience Sessions"  # The title of the book. Will be placed in the left navbar.
+author                      : NABI-SNU  # The author of the book
+copyright                   : "By NABI-SNU"  # Copyright year to be placed in the footer
 logo                        : tutorials/static/nma-logo-square-4xp.png  # A path to the book logo
 only_build_toc_files        : true
 
@@ -56,8 +56,9 @@ html:
     <div>
     <a href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
     <a href="https://opensource.org/licenses/BSD-3-Clause"><img src="https://camo.githubusercontent.com/9b9ea65d95c9ef878afa1987df65731d47681336/68747470733a2f2f696d672e736869656c64732e696f2f707970692f6c2f736561626f726e2e737667"></a>
-    The contents of this repository are shared under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-    Software elements are additionally licensed under the <a href="https://opensource.org/licenses/BSD-3-Clause">BSD (3-Clause) License</a>.
+    By NABI-SNU. This book adapts Neuromatch Academy Computational Neuroscience and NeuroAI materials, with original contributor credits preserved in each lesson.
+    Much of the educational content remains available under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a> with attribution to Neuromatch Academy and the original contributors.
+    Code and software elements adapted from Neuromatch Academy remain additionally available under the <a href="https://opensource.org/licenses/BSD-3-Clause">BSD (3-Clause) License</a> with attribution to Neuromatch Academy.
     </div>
 #######################################################################################
 # Launch button settings
@@ -69,6 +70,6 @@ launch_buttons:
   colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
 
 repository:
-  url                       : https://github.com/NeuromatchAcademy/course-content  # The URL to your book's repository
+  url                       : https://github.com/Cauch-BS/compneu  # The URL to your book's repository
   path_to_book              : book  # A path to your book's folder, relative to the repository root.
   branch                    : main  # Which branch of the repository should be used when creating links
