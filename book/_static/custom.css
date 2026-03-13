@@ -80,14 +80,14 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
     color-scheme: dark;
     --pst-color-background: #030620;
-    --pst-color-on-background: #0a0f2c;
+    --pst-color-on-background: #030620;
     --pst-color-surface: #121a43;
     --pst-color-on-surface: #1a2558;
-    --pst-color-panel-background: #0a0f2c;
+    --pst-color-panel-background: #030620;
     --pst-color-border: #2b386d;
     --pst-color-shadow: rgba(0, 0, 0, 0.45);
     --mystnb-source-bg-color: #0e1435;
-    --mystnb-stdout-bg-color: #0a0f2c;
+    --mystnb-stdout-bg-color: #030620;
     --mystnb-stderr-bg-color: #341826;
     --mystnb-traceback-bg-color: #241426;
     --mystnb-source-border-color: #2b386d;
@@ -103,6 +103,7 @@ html[data-theme="dark"] .bd-main,
 html[data-theme="dark"] .bd-content,
 html[data-theme="dark"] .bd-content .bd-article-container,
 html[data-theme="dark"] .bd-content .bd-article,
+html[data-theme="dark"] .bd-header,
 html[data-theme="dark"] .bd-header-article,
 html[data-theme="dark"] .bd-sidebar-secondary,
 html[data-theme="dark"] footer.bd-footer-content {
