@@ -4,7 +4,7 @@ There are a number of different logical positions in which treatments of Bayesia
 
 Ma, W. J., Kording, K., and Goldreich, D. (2022) Bayesian models of perception and action. MIT press. url: [www.cns.nyu.edu/malab/bayesianbook](https://www.cns.nyu.edu/malab/bayesianbook.html). _Note: The only text book explicitly developed for the nma community._
 
-### Statistics:
+## Statistics:
 
 MacKay, D. J. C. (2003). Information theory, inference and learning algorithms. Cambridge university press. url: [inference.org.uk/itprnn](https://www.inference.org.uk/itprnn/book.pdf). _Note: Beautiful combination of Bayesian statistics with information theory by the late David MacKay. The book is available for free online. Simply beautiful._
 
@@ -16,12 +16,12 @@ Downey, A. (2013). Think Bayes: Bayesian Statistics in Python. O'Reilly Media, I
 
 Kruschke, J. (2014). Doing Bayesian data analysis: A tutorial with R, JAGS, and Stan. Academic Press. _Note: This book is good for the python Bayes codes._
 
-### Normative Models:
+## Normative Models:
 
 Knill, D. C., and Richards, W. (Eds.). (1996). Perception as Bayesian inference. Cambridge University Press. _Note: The book that propelled the field to visibility._
 
 Welchman, A. E., Trommershauser, J., Kording, K., and Landy, M. S. (2011). Decoding the cortical representation of depth. Sensory cue integration. Oxford University Press. _Note: This book is largely focused on Bayesian approaches to cue combination._
 
-### Analysis of neural data:
+## Analysis of neural data:
 
 Kass, R. E., Eden, U. T., & Brown, E. N. (2014). Analysis of neural data (Vol. 491). New York: Springer. _Note: This book contains a good treatment of Bayesian approaches to the analysis of neural data._

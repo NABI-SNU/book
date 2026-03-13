@@ -1,4 +1,5 @@
 import json
+import re
 import shutil
 import sys
 from copy import deepcopy
@@ -47,6 +48,7 @@ def preprocess_notebook(path: Path) -> None:
     content = open_links_in_new_tabs(content)
     content = change_video_widths(content)
     content = link_hidden_cells(content)
+    content = normalize_markdown_structure(content)
     path.write_text(json.dumps(content, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
@@ -137,6 +139,83 @@ def change_video_widths(content: dict) -> dict:
             source_line = source_line.replace("480", "410")
             cell["source"][idx] = source_line
     return content
+
+
+HEADING_RE = re.compile(r"^(#{1,6})(\s+.*)$")
+ANCHOR_RE = re.compile(r"^\s*<a\s+name=['\"]([^'\"]+)['\"]\s*>\s*</a>\s*$")
+
+
+def normalize_markdown_structure(content: dict) -> dict:
+    previous_heading_level = 0
+
+    for cell in content.get("cells", []):
+        if cell.get("cell_type") != "markdown":
+            continue
+
+        source_lines = cell.get("source", [])
+        if not source_lines:
+            continue
+
+        updated_lines = strip_leading_transition(source_lines)
+        updated_lines = convert_html_anchor_to_myst_target(updated_lines)
+
+        for idx, line in enumerate(updated_lines):
+            heading_match = HEADING_RE.match(line)
+            if not heading_match:
+                if line.strip():
+                    break
+                continue
+
+            heading_level = len(heading_match.group(1))
+            if previous_heading_level and heading_level > previous_heading_level + 1:
+                heading_level = previous_heading_level + 1
+                updated_lines[idx] = "#" * heading_level + heading_match.group(2)
+
+            previous_heading_level = heading_level
+            break
+
+        cell["source"] = updated_lines
+
+    return content
+
+
+def strip_leading_transition(source_lines: list[str]) -> list[str]:
+    first_content_idx = next((idx for idx, line in enumerate(source_lines) if line.strip()), None)
+    if first_content_idx is None:
+        return source_lines
+    if source_lines[first_content_idx].strip() != "---":
+        return source_lines
+
+    next_content_idx = next(
+        (idx for idx in range(first_content_idx + 1, len(source_lines)) if source_lines[idx].strip()),
+        None,
+    )
+    if next_content_idx is None or not source_lines[next_content_idx].lstrip().startswith("#"):
+        return source_lines
+
+    return source_lines[:first_content_idx] + source_lines[next_content_idx:]
+
+
+def convert_html_anchor_to_myst_target(source_lines: list[str]) -> list[str]:
+    for idx, line in enumerate(source_lines):
+        if not line.strip():
+            continue
+
+        anchor_match = ANCHOR_RE.match(line)
+        if not anchor_match:
+            return source_lines
+
+        next_content_idx = next((pos for pos in range(idx + 1, len(source_lines)) if source_lines[pos].strip()), None)
+        if next_content_idx is None:
+            return source_lines
+
+        if HEADING_RE.match(source_lines[next_content_idx].lstrip()):
+            updated_lines = list(source_lines)
+            updated_lines[idx] = f"({anchor_match.group(1)})=\n"
+            return updated_lines
+        return source_lines
+
+    return source_lines
 
 
 def create_chapter_title(material: dict) -> Path:
