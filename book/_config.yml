@@ -36,6 +36,8 @@ sphinx:
     html_show_copyright: false
     suppress_warnings:
       - mystnb.unknown_mime_type
+    templates_path:
+      - _templates
     myst_substitutions:
      open_access: "<img alt='Open Access publication' src='../static/Open_Access_logo.png' height=0.8em class='no-scaled-link inline-icon'>"
      closed_access: "<img alt='Closed Access publication' src='../static/Closed_Access_logo.png' height=0.8em class='no-scaled-link inline-icon'>"
