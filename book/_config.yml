@@ -34,6 +34,8 @@ parse:
 sphinx:
   config:
     html_show_copyright: false
+    html_js_files:
+      - theme-toggle.js
     suppress_warnings:
       - mystnb.unknown_mime_type
     templates_path:
