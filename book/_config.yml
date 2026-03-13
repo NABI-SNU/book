@@ -34,6 +34,11 @@ parse:
 sphinx:
   config:
     html_show_copyright: false
+    html_theme_options:
+      footer_content_items:
+        - author.html
+        - copyright.html
+        - extra-footer.html
     html_js_files:
       - theme-toggle.js
       - sidebar-parts.js
