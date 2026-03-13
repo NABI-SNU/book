@@ -1,4 +1,5 @@
 import json
+import hashlib
 import re
 import shutil
 import sys
@@ -49,6 +50,7 @@ def preprocess_notebook(path: Path) -> None:
     content = change_video_widths(content)
     content = link_hidden_cells(content)
     content = normalize_markdown_structure(content)
+    content = ensure_cell_ids(content, path)
     path.write_text(json.dumps(content, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
@@ -216,6 +218,32 @@ def convert_html_anchor_to_myst_target(source_lines: list[str]) -> list[str]:
         return source_lines
 
     return source_lines
+
+
+def ensure_cell_ids(content: dict, path: Path) -> dict:
+    used_ids = set()
+
+    for idx, cell in enumerate(content.get("cells", [])):
+        cell_id = cell.get("id")
+        if cell_id:
+            used_ids.add(cell_id)
+            continue
+
+        source = cell.get("source", [])
+        source_text = "".join(source) if isinstance(source, list) else str(source)
+        digest = hashlib.sha1(
+            f"{path.as_posix()}::{idx}::{cell.get('cell_type', '')}::{source_text}".encode("utf-8")
+        ).hexdigest()[:12]
+        cell_id = f"c{digest}"
+
+        while cell_id in used_ids:
+            digest = hashlib.sha1(f"{cell_id}::{path.as_posix()}".encode("utf-8")).hexdigest()[:12]
+            cell_id = f"c{digest}"
+
+        cell["id"] = cell_id
+        used_ids.add(cell_id)
+
+    return content
 
 
 def create_chapter_title(material: dict) -> Path:

@@ -1,3 +1,65 @@
 .inline-icon {
     vertical-align: baseline;
 }
+
+html[data-theme="light"] {
+    color-scheme: light;
+}
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+    --pst-color-background: #030620;
+    --pst-color-on-background: #0a0f2c;
+    --pst-color-surface: #121a43;
+    --pst-color-on-surface: #1a2558;
+    --pst-color-panel-background: #0a0f2c;
+    --pst-color-border: #2b386d;
+    --pst-color-shadow: rgba(0, 0, 0, 0.45);
+    --mystnb-source-bg-color: #0e1435;
+    --mystnb-stdout-bg-color: #0a0f2c;
+    --mystnb-stderr-bg-color: #341826;
+    --mystnb-traceback-bg-color: #241426;
+    --mystnb-source-border-color: #2b386d;
+    --mystnb-source-margin-color: #7aa2ff;
+    --mystnb-stdout-border-color: #233161;
+    --mystnb-stderr-border-color: #6d3448;
+    --mystnb-traceback-border-color: #7a4360;
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] .bd-container,
+html[data-theme="dark"] .bd-main,
+html[data-theme="dark"] .bd-content,
+html[data-theme="dark"] .bd-content .bd-article-container,
+html[data-theme="dark"] .bd-content .bd-article,
+html[data-theme="dark"] .bd-header-article,
+html[data-theme="dark"] .bd-sidebar-secondary,
+html[data-theme="dark"] footer.bd-footer-content {
+    background-color: var(--pst-color-background);
+}
+
+html[data-theme="dark"] .bd-sidebar-primary,
+html[data-theme="dark"] .dropdown-menu,
+html[data-theme="dark"] .search-button__search-container {
+    background-color: var(--pst-color-on-background);
+}
+
+html[data-theme="dark"] .cell_output .output.text_plain,
+html[data-theme="dark"] .cell_output .output.stream,
+html[data-theme="dark"] .cell_output .output.stderr,
+html[data-theme="dark"] .cell_output .output.traceback,
+html[data-theme="dark"] div.cell_output table {
+    color: var(--pst-color-text-base);
+}
+
+html[data-theme="dark"] div.cell_output thead {
+    border-bottom: 1px solid var(--pst-color-border);
+}
+
+html[data-theme="dark"] div.cell_output tbody tr:nth-child(odd) {
+    background: rgba(122, 162, 255, 0.08);
+}
+
+html[data-theme="dark"] div.cell_output tbody tr:hover {
+    background: rgba(122, 162, 255, 0.16);
+}

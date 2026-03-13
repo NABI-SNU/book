@@ -62,16 +62,7 @@ html:
     Much of the educational content remains available under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a> with attribution to Neuromatch Academy and the original contributors.
     Code and software elements adapted from Neuromatch Academy remain additionally available under the <a href="https://opensource.org/licenses/BSD-3-Clause">BSD (3-Clause) License</a> with attribution to Neuromatch Academy.
     </div>
-#######################################################################################
-# Launch button settings
-launch_buttons:
-  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
-  binderhub_url             : ""  # The URL of the BinderHub (e.g., https://mybinder.org)
-  jupyterhub_url            : ""  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
-  thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
-  colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
-
 repository:
-  url                       : https://github.com/Cauch-BS/compneu  # The URL to your book's repository
+  url                       : https://github.com/NABI-SNU/book  # The URL to your book's repository
   path_to_book              : book  # A path to your book's folder, relative to the repository root.
   branch                    : main  # Which branch of the repository should be used when creating links
