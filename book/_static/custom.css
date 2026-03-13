@@ -15,6 +15,41 @@
     padding: 0.5rem;
 }
 
+.sidebar-part-caption {
+    margin-bottom: 0.35rem;
+}
+
+.sidebar-part-toggle {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    gap: 0.5rem;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+
+.sidebar-part-toggle::before {
+    color: var(--pst-color-text-muted);
+    content: "\f078";
+    font-family: "Font Awesome 6 Free";
+    font-size: 0.75rem;
+    font-weight: 900;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-part-toggle[aria-expanded="false"]::before {
+    transform: rotate(-90deg);
+}
+
+.sidebar-part-nav[hidden] {
+    display: none !important;
+}
+
 .theme-toggle-button:hover,
 .theme-toggle-button:active {
     background-color: var(--pst-color-on-surface) !important;

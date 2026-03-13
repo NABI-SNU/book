@@ -30,6 +30,10 @@ def reset_staged_tutorials() -> None:
     BOOK_TUTORIALS_DIR.mkdir(parents=True, exist_ok=True)
 
 
+def display_part_label(part: str) -> str:
+    return part.replace("_", " ")
+
+
 def stage_material(material: dict) -> Path:
     source_dir = SOURCE_TUTORIALS_DIR / material["slug"]
     target_dir = BOOK_TUTORIALS_DIR / material["slug"]
@@ -248,8 +252,9 @@ def ensure_cell_ids(content: dict, path: Path) -> dict:
 
 def create_chapter_title(material: dict) -> Path:
     chapter_title = BOOK_TUTORIALS_DIR / material["slug"] / "chapter_title.md"
+    part_label = display_part_label(material["part"])
     chapter_title.write_text(
-        f"# {material['part']}: {material['name']}\n\n"
+        f"# {part_label}: {material['name']}\n\n"
         f"This session collects the curated material for **{material['name']}**.\n",
         encoding="utf-8",
     )
@@ -311,7 +316,7 @@ def main() -> None:
             "sections": build_sections(material),
         }
 
-        caption = material["part"]
+        caption = display_part_label(material["part"])
         if caption not in parts_by_caption:
             part = {"caption": caption, "chapters": []}
             parts_by_caption[caption] = part

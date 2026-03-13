@@ -36,6 +36,7 @@ sphinx:
     html_show_copyright: false
     html_js_files:
       - theme-toggle.js
+      - sidebar-parts.js
     suppress_warnings:
       - mystnb.unknown_mime_type
     templates_path:
@@ -58,14 +59,7 @@ html:
   comments:
     hypothesis              : false
     utterances              : false
-  extra_footer : |
-    <div>
-    <a href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
-    <a href="https://opensource.org/licenses/BSD-3-Clause"><img src="https://camo.githubusercontent.com/9b9ea65d95c9ef878afa1987df65731d47681336/68747470733a2f2f696d672e736869656c64732e696f2f707970692f6c2f736561626f726e2e737667"></a>
-    By NABI-SNU. This book adapts Neuromatch Academy Computational Neuroscience and NeuroAI materials, with original contributor credits preserved in each lesson.
-    Much of the educational content remains available under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a> with attribution to Neuromatch Academy and the original contributors.
-    Code and software elements adapted from Neuromatch Academy remain additionally available under the <a href="https://opensource.org/licenses/BSD-3-Clause">BSD (3-Clause) License</a> with attribution to Neuromatch Academy.
-    </div>
+  extra_footer              : By NABI-SNU. This book adapts Neuromatch Academy Computational Neuroscience and NeuroAI materials, with original contributor credits preserved in each lesson.
 repository:
   url                       : https://github.com/NABI-SNU/book  # The URL to your book's repository
   path_to_book              : book  # A path to your book's folder, relative to the repository root.

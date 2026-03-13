@@ -27,9 +27,9 @@ The curriculum then moves toward **dynamical systems** and latent-state models, 
 
 The current curated book follows that progression through a session-based structure:
 
-- **Session_1** introduces model fitting, dimensionality reduction, and deep learning.
-- **Session_2** focuses on Bayesian inference and probabilistic reasoning.
-- **Session_3** introduces hidden dynamics through hidden Markov models.
-- **Session_6** explores representation geometry by comparing artificial and biological neural networks.
+- **Session 1** introduces model fitting, dimensionality reduction, and deep learning.
+- **Session 2** focuses on Bayesian inference and probabilistic reasoning.
+- **Session 3** introduces hidden dynamics through hidden Markov models.
+- **Session 6** explores representation geometry by comparing artificial and biological neural networks.
 
 Together, these sessions are meant to give new members a common conceptual starting point and a shared practical foundation for later reading groups, projects, and research discussions within NABI.
