@@ -323,6 +323,8 @@ def main() -> None:
             toc["parts"].append(part)
         parts_by_caption[caption]["chapters"].append(chapter)
 
+    toc["parts"].append({"caption": "Reference", "chapters": [{"file": "licensing", "title": "Licensing"}]})
+
     toc_path = BOOK_DIR / "_toc.yml"
     toc_path.write_text(yaml.safe_dump(toc, sort_keys=False), encoding="utf-8")
 
