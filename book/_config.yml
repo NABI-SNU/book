@@ -6,8 +6,8 @@
 #######################################################################################
 # Book settings
 title                       : "Computational Neuroscience Sessions"  # The title of the book. Will be placed in the left navbar.
-author                      : NABI-SNU  # The author of the book
-copyright                   : "By NABI-SNU"  # Copyright year to be placed in the footer
+author                      : NABI Labs  # The author of the book
+copyright                   : "By NABI Labs"  # Copyright year to be placed in the footer
 logo                        : tutorials/static/book-logo-hero-image.png  # A path to the book logo
 only_build_toc_files        : true
 
@@ -34,11 +34,6 @@ parse:
 sphinx:
   config:
     html_show_copyright: false
-    html_theme_options:
-      footer_content_items:
-        - author.html
-        - copyright.html
-        - extra-footer.html
     html_js_files:
       - theme-toggle.js
       - sidebar-parts.js
@@ -57,14 +52,13 @@ html:
   use_repository_button     : true  # Whether to add a link to your repository button
   use_issues_button         : true  # Whether to add an "open an issue" button
   extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
-  extra_footer              : ""  # Will be displayed underneath the footer.
+  extra_footer              : This book adapts Neuromatch Academy Computational Neuroscience and NeuroAI materials, with original contributor credits preserved in each lesson.
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
   comments:
     hypothesis              : false
     utterances              : false
-  extra_footer              : By NABI-SNU. This book adapts Neuromatch Academy Computational Neuroscience and NeuroAI materials, with original contributor credits preserved in each lesson.
 repository:
   url                       : https://github.com/NABI-SNU/book  # The URL to your book's repository
   path_to_book              : book  # A path to your book's folder, relative to the repository root.
