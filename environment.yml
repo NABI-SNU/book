@@ -1,4 +1,4 @@
-name: nma-compneuro
+name: book-nabilab-org
 dependencies:
   - python=3.9
   - requests
@@ -6,6 +6,7 @@ dependencies:
   - scipy
   - matplotlib
   - scikit-learn
-  - pytorch
+  - umap-learn
+  - torch
   - ipywidgets
   - pip

@@ -1,17 +1,11 @@
 - part: Session_1
-  name: Models
+  name: Linear Models
   slug: Session_1_Models
   intro: Intro
   tutorials:
     - Tutorial1
     - Tutorial2
     - Tutorial3
-    - Tutorial4
-    - Tutorial5
-    - Tutorial6
-  outro: Outro
-  include_further_reading: true
-  day_summary: DaySummary
 
 - part: Session_1
   name: Dimension Reduction
@@ -20,11 +14,6 @@
   tutorials:
     - Tutorial1
     - Tutorial2
-    - Tutorial3
-    - Tutorial4
-  outro: Outro
-  include_further_reading: true
-  day_summary: DaySummary
 
 - part: Session_1
   name: Deep Learning
@@ -35,9 +24,6 @@
     - Tutorial2
     - Tutorial3
     - Tutorial4
-  outro: Outro
-  include_further_reading: true
-  day_summary: DaySummary
 
 - part: Session_2
   name: Bayesian Inference
