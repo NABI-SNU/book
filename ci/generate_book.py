@@ -313,8 +313,10 @@ def main() -> None:
         chapter = {
             "file": notebook_file_slug(chapter_title.relative_to(BOOK_DIR)),
             "title": material["name"],
-            "sections": build_sections(material),
         }
+        sections = build_sections(material)
+        if sections:
+            chapter["sections"] = sections
 
         caption = display_part_label(material["part"])
         if caption not in parts_by_caption:
