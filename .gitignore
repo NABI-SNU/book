@@ -4,3 +4,4 @@
 _build
 _toc.yml
 book/tutorials/
+**/__pycache__/

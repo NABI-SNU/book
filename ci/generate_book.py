@@ -5,6 +5,7 @@ import shutil
 import sys
 from copy import deepcopy
 from pathlib import Path
+from typing import Optional
 
 import yaml
 from bs4 import BeautifulSoup
@@ -38,6 +39,17 @@ def stage_material(material: dict) -> Path:
     source_dir = SOURCE_TUTORIALS_DIR / material["slug"]
     target_dir = BOOK_TUTORIALS_DIR / material["slug"]
     shutil.copytree(source_dir, target_dir, dirs_exist_ok=True)
+
+    role_dir = target_dir / ROLE
+    role_dir.mkdir(parents=True, exist_ok=True)
+
+    # Some sessions keep role-agnostic notebooks at the material root.
+    # Mirror them into the requested role directory so TOC paths are consistent.
+    for notebook_path in target_dir.glob("*.ipynb"):
+        destination = role_dir / notebook_path.name
+        if not destination.exists():
+            shutil.copy2(notebook_path, destination)
+
     return target_dir
 
 
@@ -261,6 +273,18 @@ def create_chapter_title(material: dict) -> Path:
     return chapter_title
 
 
+def resolve_notebook_path(staged_dir: Path, notebook_name: str) -> Optional[Path]:
+    role_path = staged_dir / ROLE / f"{notebook_name}.ipynb"
+    if role_path.exists():
+        return role_path
+
+    fallback_path = staged_dir / f"{notebook_name}.ipynb"
+    if fallback_path.exists():
+        return fallback_path
+
+    return None
+
+
 def build_sections(material: dict) -> list[dict]:
     slug = material["slug"]
     staged_dir = BOOK_TUTORIALS_DIR / slug
@@ -268,21 +292,21 @@ def build_sections(material: dict) -> list[dict]:
 
     intro_name = material.get("intro")
     if intro_name:
-        intro_path = staged_dir / ROLE / f"{intro_name}.ipynb"
-        if intro_path.exists():
+        intro_path = resolve_notebook_path(staged_dir, intro_name)
+        if intro_path:
             preprocess_notebook(intro_path)
             sections.append({"file": notebook_file_slug(intro_path.relative_to(BOOK_DIR))})
 
     for tutorial in material["tutorials"]:
-        tutorial_path = staged_dir / ROLE / f"{tutorial}.ipynb"
-        if tutorial_path.exists():
+        tutorial_path = resolve_notebook_path(staged_dir, tutorial)
+        if tutorial_path:
             preprocess_notebook(tutorial_path)
             sections.append({"file": notebook_file_slug(tutorial_path.relative_to(BOOK_DIR))})
 
     outro_name = material.get("outro")
     if outro_name:
-        outro_path = staged_dir / ROLE / f"{outro_name}.ipynb"
-        if outro_path.exists():
+        outro_path = resolve_notebook_path(staged_dir, outro_name)
+        if outro_path:
             preprocess_notebook(outro_path)
             sections.append({"file": notebook_file_slug(outro_path.relative_to(BOOK_DIR))})
 
@@ -291,8 +315,8 @@ def build_sections(material: dict) -> list[dict]:
 
     summary_name = material.get("day_summary")
     if summary_name:
-        summary_path = staged_dir / ROLE / f"{summary_name}.ipynb"
-        if summary_path.exists():
+        summary_path = resolve_notebook_path(staged_dir, summary_name)
+        if summary_path:
             preprocess_notebook(summary_path)
             sections.append({"file": notebook_file_slug(summary_path.relative_to(BOOK_DIR))})
 
