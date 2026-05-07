@@ -33,9 +33,6 @@
     - Tutorial1
     - Tutorial2
     - Tutorial3
-  outro: Outro
-  include_further_reading: true
-  day_summary: DaySummary
 
 - part: Session_3
   name: Hidden Dynamics

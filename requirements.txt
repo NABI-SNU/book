@@ -1,6 +1,7 @@
 requests
 numpy
 scipy
+sympy
 matplotlib
 scikit-learn
 torch
