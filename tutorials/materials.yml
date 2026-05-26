@@ -39,8 +39,7 @@
   slug: Session_3_HiddenDynamics
   intro: Intro
   tutorials:
-    - LatentDynamics
-  include_further_reading: true
+    - Tutorial1
 
 - part: Session_6
   name: Representation Geometry
