@@ -39,7 +39,7 @@
   slug: Session_3_HiddenDynamics
   intro: Intro
   tutorials:
-    - Tutorial1
+    - LatentDynamics
   include_further_reading: true
 
 - part: Session_6
