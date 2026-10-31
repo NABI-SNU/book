@@ -33,4 +33,6 @@ The book follows that progression through five sessions:
 - **Session 4** introduces reinforcement learning, from multi-armed bandits to temporal-difference learning and the dopamine reward prediction error.
 - **Session 5** explores representation geometry with RSA, cross-condition generalization (CCGP), and dynamical similarity analysis (DSA), comparing artificial and biological neural networks.
 
+Each session's recording, slides, and date are listed on the NABI homepage under [Seminars & Topic Reviews](https://nabilab.org/seminars), together with the papers read in the Topic Review Series.
+
 Together, these sessions are meant to give new members a common conceptual starting point and a shared practical foundation for later reading groups, projects, and research discussions within NABI.
