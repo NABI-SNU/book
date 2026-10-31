@@ -1,0 +1,8 @@
+{%- extends "!layout.html" %}
+{#- Use the same icon set as nabilab.org (favicon.ico comes from html.favicon in _config.yml). #}
+{%- block extrahead %}
+{{ super() }}
+<link rel="icon" href="{{ pathto('_static/favicon.svg', 1) }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ pathto('_static/apple-touch-icon.png', 1) }}">
+<link rel="mask-icon" href="{{ pathto('_static/favicon.svg', 1) }}" color="#F2873A">
+{%- endblock %}
