@@ -51,6 +51,11 @@ sphinx:
     html_theme_options:
       show_navbar_depth: 3
       collapse_navigation: false
+      logo:
+        # Wordmark ink colour per theme: charcoal on the light background, cream on the dark one.
+        image_light: nabi-logo-charcoal.svg
+        image_dark: nabi-logo-cream.svg
+        alt_text: NABI
     html_js_files:
       - theme-toggle.js
       - sidebar-parts.js
