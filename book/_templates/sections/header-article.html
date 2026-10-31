@@ -9,6 +9,7 @@
         </label>
     </div>
     <div class="header-article__right">
+        {% include "components/nabi-links.html" %}
         {% include "components/theme-switcher.html" %}
         {%- for button in header_buttons -%}
         {%- if button.type != "group" or button.buttons -%}

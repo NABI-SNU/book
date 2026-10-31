@@ -1,3 +1,45 @@
+/* Match nabilab.org: Inter, the homepage's blue primary and purple accent, and its dark palette. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+html {
+    --pst-font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --pst-font-family-heading: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html[data-theme="light"] {
+    --pst-color-primary: oklch(57.8% 0.23 259deg);
+    --pst-color-secondary: oklch(56.5% 0.24 305deg);
+    --pst-color-link: oklch(57.8% 0.23 259deg);
+    --pst-color-link-hover: oklch(56.5% 0.24 305deg);
+    --pst-color-background: oklch(100% 0 0deg);
+    --pst-color-on-background: oklch(98% 0.004 265deg);
+    --pst-color-surface: oklch(96.8% 0.003 264deg);
+    --pst-color-text-base: oklch(17.8% 0 0deg);
+    --pst-color-text-muted: oklch(45% 0 0deg);
+    --pst-color-border: oklch(91.3% 0 0deg);
+}
+
+html[data-theme="dark"] {
+    --pst-color-primary: oklch(68% 0.17 259deg);
+    --pst-color-secondary: oklch(68% 0.18 305deg);
+    --pst-color-link: oklch(72% 0.15 259deg);
+    --pst-color-link-hover: oklch(72% 0.16 305deg);
+    --pst-color-background: #030620;
+    --pst-color-on-background: oklch(19% 0.05 275deg);
+    --pst-color-surface: oklch(25% 0.04 272deg);
+    --pst-color-text-base: oklch(92.6% 0.019 249deg);
+    --pst-color-text-muted: oklch(78% 0.02 250deg);
+    --pst-color-border: oklch(37% 0.03 269deg);
+}
+
+.nabi-header-link {
+    color: var(--pst-color-text-muted);
+}
+
+.nabi-header-link:hover {
+    color: var(--pst-color-primary);
+}
+
 .inline-icon {
     vertical-align: baseline;
 }
