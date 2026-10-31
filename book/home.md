@@ -23,13 +23,14 @@ The overall curriculum is organized as a progressive introduction to computation
 
 It begins with **foundational machine learning tools** for fitting models to data, interpreting representations, and building intuition about how models can be used in neuroscience. From there, it expands into **probabilistic inference**, where hidden variables, uncertainty, and decision-making become central.
 
-The curriculum then moves toward **dynamical systems** and latent-state models, which provide a language for thinking about temporal structure, internal dynamics, and evolving neural processes. In the broader seminar trajectory, these ideas extend naturally toward **reinforcement learning** and **geometry**, where questions of action, representation, and structure become increasingly important.
+The curriculum then moves toward **dynamical systems** and latent-state models, which provide a language for thinking about temporal structure, internal dynamics, and evolving neural processes. From there it extends to **reinforcement learning**, where an agent learns to act from reward and the same learning signal appears in dopamine neurons, and finally to **representation geometry**, where we ask what a network or brain region represents and in what form.
 
-The current curated book follows that progression through a session-based structure:
+The book follows that progression through five sessions:
 
 - **Session 1** introduces model fitting, dimensionality reduction, and deep learning.
 - **Session 2** focuses on Bayesian inference and probabilistic reasoning.
 - **Session 3** introduces hidden dynamics through hidden Markov models.
-- **Session 6** explores representation geometry by comparing artificial and biological neural networks.
+- **Session 4** introduces reinforcement learning, from multi-armed bandits to temporal-difference learning and the dopamine reward prediction error.
+- **Session 5** explores representation geometry with RSA, cross-condition generalization (CCGP), and dynamical similarity analysis (DSA), comparing artificial and biological neural networks.
 
 Together, these sessions are meant to give new members a common conceptual starting point and a shared practical foundation for later reading groups, projects, and research discussions within NABI.

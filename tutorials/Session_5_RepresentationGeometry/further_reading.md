@@ -36,3 +36,15 @@
 
 - Williams AH, Kunz E, Kornblith S, Linderman S. (2021). [Generalized shape metrics on neural representations](https://arxiv.org/abs/2110.14739). Advances in Neural Information Processing Systems.
 - Lange RD, Kwok D, Matelsky J, Wang X, Rolnick DS, Kording KP. (2022). [Neural networks as paths through the space of representations](https://arxiv.org/abs/2206.10999). arXiv:2206.10999.
+
+## Abstraction and cross-condition generalization
+
+- Bernardi, S., Benna, M. K., Rigotti, M., Munuera, J., Fusi, S. & Salzman, C. D. (2020). [The geometry of abstraction in the hippocampus and prefrontal cortex](https://doi.org/10.1016/j.cell.2020.09.031). Cell, 183(4), 954–967.e21.
+
+## Representational models
+
+- Diedrichsen, J. & Kriegeskorte, N. (2017). [Representational models: a common framework for understanding encoding, pattern-component, and representational-similarity analysis](https://doi.org/10.1371/journal.pcbi.1005508). PLOS Computational Biology, 13(4), e1005508.
+
+## Dynamical similarity analysis
+
+- Ostrow, M., Eisen, A., Kozachkov, L. & Fiete, I. (2023). [Beyond geometry: comparing the temporal structure of computation in neural circuits with dynamical similarity analysis](https://arxiv.org/abs/2306.10168). Advances in Neural Information Processing Systems, 36.

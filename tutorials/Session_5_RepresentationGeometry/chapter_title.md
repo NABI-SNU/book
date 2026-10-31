@@ -1,3 +1,3 @@
-# Session 6: Representation Geometry
+# Session 5: Representation Geometry
 
 This session collects the curated material for **Representation Geometry**.

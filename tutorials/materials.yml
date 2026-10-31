@@ -41,11 +41,21 @@
   tutorials:
     - Tutorial1
 
-- part: Session_6
-  name: Representation Geometry
-  slug: Session_6_RepresentationGeometry
+- part: Session_4
+  name: Reinforcement Learning
+  slug: Session_4_ReinforcementLearning
   intro: Intro
   tutorials:
+    - Tutorial1
+    - Tutorial2
+  include_further_reading: true
+
+- part: Session_5
+  name: Representation Geometry
+  slug: Session_5_RepresentationGeometry
+  intro: Intro
+  tutorials:
+    - Lab
     - Tutorial1
     - Tutorial2
     - Tutorial3
