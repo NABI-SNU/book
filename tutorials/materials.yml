@@ -48,7 +48,6 @@
   tutorials:
     - Tutorial1
     - Tutorial2
-  include_further_reading: true
 
 - part: Session_5
   name: Representation Geometry
@@ -56,7 +55,3 @@
   intro: Intro
   tutorials:
     - Lab
-    - Tutorial1
-    - Tutorial2
-    - Tutorial3
-  include_further_reading: true

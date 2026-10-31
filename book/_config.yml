@@ -29,9 +29,6 @@ execute:
     - Session_1_DeepLearning/student/Tutorial2.ipynb
     - Session_1_DeepLearning/student/Tutorial3.ipynb
     - Session_1_DeepLearning/student/Tutorial4.ipynb
-    - Session_5_RepresentationGeometry/student/Tutorial1.ipynb
-    - Session_5_RepresentationGeometry/student/Tutorial2.ipynb
-    - Session_5_RepresentationGeometry/student/Tutorial3.ipynb
   timeout                   : 360    # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
                                     # otherwise the notebook's parent directory will be the cwd.
