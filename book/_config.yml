@@ -15,9 +15,23 @@ only_build_toc_files        : true
 #######################################################################################
 # Execution settings
 execute:
-  execute_notebooks         : force # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  # "cache" re-executes a notebook only when its code cells change (jupyter-cache).
+  # CI keeps book/_build/.jupyter_cache between runs, so text-only edits execute nothing.
+  execute_notebooks         : cache # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
-  exclude_patterns          : [Bonus_Autoencoders/student/Bonus_Tutorial1.ipynb, Bonus_Autoencoders/student/Bonus_Tutorial2.ipynb, Bonus_Autoencoders/student/Bonus_Tutorial3.ipynb]    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  # Heavy notebooks are not executed at build time; the book renders their committed outputs.
+  # Refresh those outputs with `python ci/refresh_outputs.py` (or the refresh-notebook-outputs workflow).
+  exclude_patterns:
+    - Bonus_Autoencoders/student/Bonus_Tutorial1.ipynb
+    - Bonus_Autoencoders/student/Bonus_Tutorial2.ipynb
+    - Bonus_Autoencoders/student/Bonus_Tutorial3.ipynb
+    - Session_1_DeepLearning/student/Tutorial1.ipynb
+    - Session_1_DeepLearning/student/Tutorial2.ipynb
+    - Session_1_DeepLearning/student/Tutorial3.ipynb
+    - Session_1_DeepLearning/student/Tutorial4.ipynb
+    - Session_5_RepresentationGeometry/student/Tutorial1.ipynb
+    - Session_5_RepresentationGeometry/student/Tutorial2.ipynb
+    - Session_5_RepresentationGeometry/student/Tutorial3.ipynb
   timeout                   : 360    # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
                                     # otherwise the notebook's parent directory will be the cwd.

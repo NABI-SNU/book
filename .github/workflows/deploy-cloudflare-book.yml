@@ -16,31 +16,27 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.9"
+      - name: Set up book environment
+        uses: ./.github/actions/setup-book
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install jupyter-book==0.14.0 pyyaml beautifulsoup4
-          pip install jupyter_client==7.3.5
-          npm install --no-save wrangler
+      - name: Install wrangler
+        run: npm install --no-save wrangler
 
-      - name: Install XKCD fonts
-        run: |
-          sudo apt-get update -yq
-          wget http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
-          sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
-          sudo apt install -fy
-          rm -f "$HOME/.matplotlib/fontList.cache"
+      # Executed notebooks are cached by a hash of their code cells (execute_notebooks: cache),
+      # so only notebooks whose code changed are re-run. The key includes the dependency files:
+      # changing them starts a fresh cache and re-executes everything.
+      - name: Restore notebook execution cache
+        uses: actions/cache@v4
+        with:
+          path: book/_build/.jupyter_cache
+          key: jupyter-cache-${{ hashFiles('requirements.txt', '.github/actions/setup-book/action.yml') }}-${{ github.sha }}
+          restore-keys: |
+            jupyter-cache-${{ hashFiles('requirements.txt', '.github/actions/setup-book/action.yml') }}-
 
       - name: Build student book
         run: |
