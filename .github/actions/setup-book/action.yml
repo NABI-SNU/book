@@ -1,0 +1,33 @@
+name: Set up book environment
+description: Python 3.9 with CPU-only PyTorch, the book's requirements, Jupyter Book, and XKCD fonts.
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.9"
+        cache: pip
+        cache-dependency-path: |
+          requirements.txt
+          .github/actions/setup-book/action.yml
+
+    - name: Install Python dependencies
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        # CPU-only wheels: the build never uses a GPU, and the default PyPI wheels pull in ~2 GB of CUDA libraries.
+        pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+        pip install -r requirements.txt
+        pip install jupyter-book==0.14.0 pyyaml beautifulsoup4
+        pip install jupyter_client==7.3.5
+
+    - name: Install XKCD fonts
+      shell: bash
+      run: |
+        sudo apt-get update -yq
+        wget -q http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
+        sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
+        sudo apt install -fy
+        rm -f "$HOME/.matplotlib/fontList.cache"
