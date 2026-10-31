@@ -6,3 +6,5 @@ _toc.yml
 book/tutorials/
 **/__pycache__/
 *.DS_Store
+# Datasets downloaded when notebooks run
+tutorials/**/data/

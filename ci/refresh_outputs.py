@@ -17,6 +17,7 @@ the book build, and commits the result.
 
 import argparse
 import json
+import re
 import sys
 import time
 from pathlib import Path, PurePosixPath
@@ -45,6 +46,25 @@ def excluded_notebooks() -> list[Path]:
     return matches
 
 
+PROGRESS_LINE = re.compile(r"^\s*(\d+%\|.*\|.*)?\s*$")
+
+
+def strip_progress_bars(notebook) -> None:
+    """Drop stderr streams that only contain download/progress bars (tqdm), which render as noise."""
+    for cell in notebook.cells:
+        if cell.cell_type != "code":
+            continue
+        cell.outputs = [
+            output
+            for output in cell.get("outputs", [])
+            if not (
+                output.get("output_type") == "stream"
+                and output.get("name") == "stderr"
+                and all(PROGRESS_LINE.match(line) for line in re.split(r"[\r\n]", output.get("text", "")))
+            )
+        ]
+
+
 def execute_in_place(path: Path) -> list[str]:
     raw = path.read_text(encoding="utf-8")
     notebook = nbformat.reads(raw, as_version=4)
@@ -57,6 +77,7 @@ def execute_in_place(path: Path) -> list[str]:
         resources={"metadata": {"path": str(path.parent)}},
     )
     client.execute()
+    strip_progress_bars(notebook)
 
     errors = [
         f"{output.get('ename')}: {output.get('evalue')}"
